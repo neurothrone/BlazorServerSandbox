@@ -1,0 +1,22 @@
+﻿@using BlazorServerSandbox.Models
+
+<EditForm Model="_skill" 
+          OnValidSubmit="() => OnSkillAdded.InvokeAsync(_skill)">
+    <InputText @bind-Value="_skill.Name"/>
+    <InputNumber @bind-Value="_skill.Level"/>
+    
+    <button type="submit">Add Skill</button>
+    <button type="button" onclick="@OnCancel">Cancel</button>
+</EditForm>
+
+@code {
+    
+    [Parameter]
+    public EventCallback<Skill> OnSkillAdded { get; set; }
+    
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+    
+    private Skill _skill = new();
+    
+}

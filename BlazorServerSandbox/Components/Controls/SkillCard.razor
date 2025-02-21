@@ -1,0 +1,40 @@
+﻿@using BlazorServerSandbox.Models
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">@Skill.Name</h5>
+    </div>
+    <div class="card-body">
+        <p>His god dam skill is over @Skill.Level !!!</p>
+    </div>
+    <div class="card-footer">
+        @if (IsAuthorized)
+        {
+            @if (_isEditing)
+            {
+                <EditForm Model="Skill" OnValidSubmit="() => OnSkillUpdated.InvokeAsync(Skill)">
+                    <InputText @bind-Value="Skill.Name"/>
+                    <InputNumber @bind-Value="Skill.Level"/>
+                    <button type="submit">Update Skill</button>
+                </EditForm>
+            }
+
+            <button type="button" @onclick="() => _isEditing = !_isEditing">Toggle</button>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public Skill Skill { get; set; }
+
+    [Parameter]
+    public bool IsAuthorized { get; set; }
+
+    [Parameter]
+    public EventCallback<Skill> OnSkillUpdated { get; set; }
+
+    private bool _isEditing;
+
+}

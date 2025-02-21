@@ -1,0 +1,45 @@
+﻿@page "/admin/skills"
+@rendermode InteractiveServer
+@* @attribute [Authorize] *@
+
+@using BlazorServerSandbox.Components.Controls
+@using BlazorServerSandbox.Models
+@* @using Microsoft.AspNetCore.Authorization *@
+
+<h3>AdminSkills</h3>
+
+@if (_skills.Any())
+{
+    @foreach (var skill in _skills)
+    {
+        <SkillCard
+            Skill="skill"
+            IsAuthorized="true"
+            OnSkillUpdated="UpdateSkill"/>
+    }
+}
+
+@code {
+
+    private List<Skill> _skills =
+    [
+        new() { Name = "Blazor", Level = 10 }
+    ];
+
+    private void UpdateSkill(Skill skill)
+    {
+        var index = _skills.FindIndex(s => s.Name == skill.Name);
+        if (index != -1)
+        {
+            // Update on API
+            // Use return result to update the skill
+            _skills[index] = skill; // Update the skill
+        }
+    }
+
+    private void DeleteSkill(Skill skill)
+    {
+        _skills.Remove(skill);
+    }
+
+}

@@ -1,0 +1,28 @@
+﻿@page "/skills/add-edit"
+
+<h3>Add/Edit Skill</h3>
+
+<div class="row">
+    @if (AddFormContent != null)
+    {
+        @AddFormContent
+    }
+    else if (EditFormContent != null)
+    {
+        @EditFormContent
+    }
+    else
+    {
+        <p>What are you up to?</p>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public RenderFragment? AddFormContent { get; set; }
+
+    [Parameter]
+    public RenderFragment? EditFormContent { get; set; }
+
+}

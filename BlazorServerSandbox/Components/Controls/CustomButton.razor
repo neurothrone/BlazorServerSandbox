@@ -1,0 +1,27 @@
+﻿<button @onclick="OnClick">
+    @if (TextContent is not null)
+    {
+        @TextContent
+    }
+    else if (IconContent is not null)
+    {
+        @IconContent
+    }
+    else
+    {
+        <span>Click me</span>
+    }
+</button>
+
+@code {
+
+    [Parameter]
+    public RenderFragment? TextContent { get; set; }
+
+    [Parameter]
+    public RenderFragment? IconContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+}
