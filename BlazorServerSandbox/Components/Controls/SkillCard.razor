@@ -34,7 +34,8 @@
 @code {
     
     // EditorRequired: This attribute indicates that the parameter is required for
-    // editing and will only show a warning in the editor.
+    // editing and will only show a warning in the editor. Will still crash at runtime
+    // if not provided.
     [Parameter, EditorRequired]
     public Skill Skill { get; set; }
 
