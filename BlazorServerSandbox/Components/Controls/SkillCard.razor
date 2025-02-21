@@ -5,21 +5,28 @@
         <h5 class="card-title">@Skill.Name</h5>
     </div>
     <div class="card-body">
-        <p>His god dam skill is over @Skill.Level !!!</p>
+        <p>His/her skill level is over <span class="fw-bolder text-danger">@Skill.Level</span>!!!</p>
     </div>
     <div class="card-footer">
         @if (IsAuthorized)
         {
             @if (_isEditing)
             {
-                <EditForm Model="Skill" OnValidSubmit="() => OnSkillUpdated.InvokeAsync(Skill)">
+                <EditForm class="mb-3"
+                          Model="Skill"
+                          OnValidSubmit="() => OnSkillUpdated.InvokeAsync(Skill)">
                     <InputText @bind-Value="Skill.Name"/>
                     <InputNumber @bind-Value="Skill.Level"/>
-                    <button type="submit">Update Skill</button>
+                    <button type="submit"
+                            class="btn btn-success">Update Skill
+                    </button>
                 </EditForm>
             }
 
-            <button type="button" @onclick="() => _isEditing = !_isEditing">Toggle</button>
+            <button type="button"
+                    class="btn btn-primary"
+                    @onclick="() => _isEditing = !_isEditing">Toggle
+            </button>
         }
     </div>
 </div>

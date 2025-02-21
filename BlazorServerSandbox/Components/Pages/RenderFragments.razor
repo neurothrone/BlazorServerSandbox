@@ -1,0 +1,66 @@
+﻿@page "/render-fragments"
+@rendermode InteractiveServer
+
+@using BlazorServerSandbox.Components.Controls
+@using BlazorServerSandbox.Models
+
+<h3 class="text-center">Render Fragments</h3>
+<hr>
+
+@* Add form *@
+<h4 class="my-4">Using 
+    <span class="fw-bold">AddEditSkillForm</span> with <span class="fw-bold">AddFormContent</span>
+</h4>
+
+<AddEditSkillForm>
+    <AddFormContent>
+        <EditForm Model="_skillToAdd" OnValidSubmit="OnSkillAdded">
+            <InputText @bind-Value="_skillToAdd.Name"/>
+            <InputNumber @bind-Value="_skillToAdd.Level"/>
+            <button type="submit"
+                    class="btn btn-primary">Add Skill</button>
+        </EditForm>
+    </AddFormContent>
+</AddEditSkillForm>
+
+@* Update form *@
+<h4 class="my-4">Using 
+    <span class="fw-bold">AddEditSkillForm</span> with <span class="fw-bold">EditFormContent</span>
+</h4>
+
+<AddEditSkillForm>
+    <EditFormContent>
+        <EditForm Model="_skillToUpdate" OnValidSubmit="() => OnSkillUpdated(_skillToUpdate)">
+            <InputText @bind-Value="_skillToUpdate.Name"/>
+            <InputNumber @bind-Value="_skillToUpdate.Level"/>
+            <button type="submit"
+                    class="btn btn-primary">Update Skill</button>
+        </EditForm>
+    </EditFormContent>
+</AddEditSkillForm>
+
+@* No content *@
+<h4 class="my-4">Using 
+    <span class="fw-bold">AddEditSkillForm</span> with nothing
+</h4>
+
+<AddEditSkillForm/>
+
+@code {
+
+    private Skill _skillToAdd = new();
+    private Skill _skillToUpdate = new() { Name = "Blazor", Level = 10 };
+
+    private async Task OnSkillAdded()
+    {
+        // Add skill somewhere
+        // Reset form
+        _skillToAdd = new Skill();
+    }
+
+    private async Task OnSkillUpdated(Skill skill)
+    {
+        // Update skill somewhere
+    }
+
+}

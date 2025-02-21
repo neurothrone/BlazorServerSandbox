@@ -1,0 +1,37 @@
+﻿@page "/buttons"
+@rendermode InteractiveServer
+
+@using BlazorServerSandbox.Components.Controls
+
+<h3 class="text-center">Buttons</h3>
+<hr>
+
+@* Text button *@
+<h4 class="my-4">Using 
+    <span class="fw-bold">CustomButton</span> with <span class="fw-bold">TextContent</span>
+</h4>
+
+<CustomButton>
+    <TextContent>
+        I am the coolest button
+    </TextContent>
+</CustomButton>
+
+@* Icon button *@
+<h4 class="my-4">Using 
+    <span class="fw-bold">CustomButton</span> with <span class="fw-bold">IconContent</span>
+</h4>
+
+<CustomButton>
+    <IconContent>
+        <i class="bi bi-emoji-sunglasses-fill"></i>
+    </IconContent>
+</CustomButton>
+
+@* Default button *@
+<h4 class="my-4">Using 
+    <span class="fw-bold">CustomButton</span> with no content
+</h4>
+
+<CustomButton/>
+
