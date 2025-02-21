@@ -32,7 +32,9 @@
 </div>
 
 @code {
-
+    
+    // EditorRequired: This attribute indicates that the parameter is required for
+    // editing and will only show a warning in the editor.
     [Parameter, EditorRequired]
     public Skill Skill { get; set; }
 
